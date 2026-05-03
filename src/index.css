@@ -21,7 +21,6 @@ html {
   color: var(--ink);
   background: #e8e4de;
   line-height: 1.45;
-  text-spacing-trim: space-first;
 }
 
 body {

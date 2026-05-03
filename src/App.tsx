@@ -19,9 +19,21 @@ const MM_TO_PX = 96 / 25.4;
 const SHEET_W_MM = 297;
 const SHEET_H_MM = 420;
 
+/** 非 HTTPS などで randomUUID が使えない環境向け */
+function newBookId(): string {
+  try {
+    if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
+      return crypto.randomUUID();
+    }
+  } catch {
+    /* secure context 外など */
+  }
+  return `id-${Date.now()}-${Math.random().toString(36).slice(2, 11)}`;
+}
+
 function emptyBook(category: Category): Book {
   return {
-    id: crypto.randomUUID(),
+    id: newBookId(),
     category,
     title: "",
     summary: "",
@@ -494,8 +506,12 @@ export default function App() {
   }, [draftCounts]);
 
   useEffect(() => {
-    const payload = JSON.stringify({ circleName, counts, books });
-    localStorage.setItem(STORAGE_KEY, payload);
+    try {
+      const payload = JSON.stringify({ circleName, counts, books });
+      localStorage.setItem(STORAGE_KEY, payload);
+    } catch {
+      /* 容量超過・プライベートモード等 */
+    }
   }, [circleName, counts, books]);
 
   const scaleWrapRef = useRef<HTMLDivElement>(null);
@@ -513,8 +529,9 @@ export default function App() {
     const ro = new ResizeObserver(() => {
       const w = el.clientWidth - 8;
       const natural = SHEET_W_MM * MM_TO_PX;
-      const s = Math.min(1, Math.max(0.22, w / natural));
-      setPreviewScale(s);
+      const raw = natural > 0 ? w / natural : 0.42;
+      const s = Math.min(1, Math.max(0.22, raw));
+      setPreviewScale(Number.isFinite(s) ? s : 0.42);
     });
     ro.observe(el);
     return () => ro.disconnect();

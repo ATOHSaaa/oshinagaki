@@ -26,6 +26,43 @@
 .app__grid {
   display: grid;
   gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (max-width: 959.98px) {
+  .app {
+    padding-top: 0.85rem;
+    padding-right: max(0.75rem, env(safe-area-inset-right));
+    padding-bottom: max(2.5rem, env(safe-area-inset-bottom));
+    padding-left: max(0.75rem, env(safe-area-inset-left));
+  }
+
+  .app__header {
+    margin-bottom: 1rem;
+  }
+
+  .app__lead {
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+
+  /* スマホ: プレビューを先に、その下へ「表示・冊数」「新刊の登録」… */
+  .app__grid > .preview-wrap {
+    order: -1;
+    position: static;
+  }
+
+  .preview-toolbar {
+    margin-bottom: 0.5rem;
+  }
+
+  .preview-scale {
+    max-height: min(58dvh, 420px);
+  }
+
+  .book-list {
+    margin-top: 1rem;
+  }
 }
 
 @media (min-width: 960px) {
@@ -219,11 +256,6 @@
 .preview-toolbar button:disabled {
   opacity: 0.55;
   cursor: not-allowed;
-}
-
-.preview-toolbar span {
-  font-size: 0.8rem;
-  color: var(--muted);
 }
 
 .preview-scale {

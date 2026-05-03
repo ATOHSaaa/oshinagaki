@@ -674,10 +674,6 @@ export default function App() {
             >
               {imageExporting ? "画像を作成中…" : "画像として保存"}
             </button>
-            <span>
-              プレビュー {Math.round(previewScale * 100)}% ·
-              シート上の文字をクリックして直接編集できます · ダイアログで A3・カラー・余白なしを選んでください
-            </span>
           </div>
           <div className="preview-scale" ref={scaleWrapRef}>
             <div

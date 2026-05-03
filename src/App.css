@@ -1,0 +1,615 @@
+.app {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 3rem;
+}
+
+.app__header {
+  text-align: center;
+  margin-bottom: 1.75rem;
+}
+
+.app__title {
+  font-family: var(--font-gothic);
+  font-weight: 900;
+  font-size: clamp(1.6rem, 4vw, 2.1rem);
+  letter-spacing: 0.12em;
+  margin: 0 0 0.35rem;
+}
+
+.app__lead {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.app__grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 960px) {
+  .app__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    align-items: start;
+  }
+}
+
+.panel {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1.1rem 1.15rem 1.25rem;
+  box-shadow: 0 8px 28px rgba(26, 21, 18, 0.06);
+}
+
+.panel__title {
+  font-family: var(--font-gothic);
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin: 0 0 0.85rem;
+  color: var(--ink);
+}
+
+.counts {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.counts__row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.counts__label {
+  min-width: 3.2rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.counts__label--shinpan {
+  color: var(--accent);
+}
+
+.counts input[type="number"] {
+  width: 4.5rem;
+  padding: 0.35rem 0.45rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.counts__apply {
+  margin-top: 0.5rem;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.counts__apply:hover {
+  filter: brightness(1.05);
+}
+
+.counts__hint {
+  margin: 0.35rem 0 0;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.book-list {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.book-card-form {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1rem 1.05rem 1.05rem;
+  background: #fff;
+}
+
+.book-card-form__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.65rem;
+}
+
+.book-card-form__badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.book-card-form__index {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.book-card-form__fields {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.book-card-form label {
+  display: grid;
+  gap: 0.28rem;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.book-card-form input,
+.book-card-form textarea {
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  width: 100%;
+  font-size: 0.95rem;
+}
+
+.book-card-form textarea {
+  min-height: 5.5rem;
+  resize: vertical;
+  line-height: 1.45;
+}
+
+.book-card-form textarea.book-card-form__textarea--title {
+  min-height: 3.25rem;
+}
+
+.book-card-form__image {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.book-card-form__image input[type="file"] {
+  font-size: 0.82rem;
+}
+
+.book-card-form__thumb {
+  width: 72px;
+  height: 102px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+}
+
+.preview-wrap {
+  position: sticky;
+  top: 0.75rem;
+}
+
+.preview-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.65rem;
+}
+
+.preview-toolbar button {
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #fff;
+  font-weight: 600;
+}
+
+.preview-toolbar button.primary {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+}
+
+.preview-toolbar button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.preview-toolbar span {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.preview-scale {
+  overflow: auto;
+  max-height: calc(100dvh - 8rem);
+  padding: 0.5rem;
+  background: #d9d4cd;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+}
+
+.preview-scale__inner {
+  transform-origin: top left;
+}
+
+.sheet-outer {
+  width: 297mm;
+  height: 420mm;
+}
+
+.sheet {
+  width: 297mm;
+  height: 420mm;
+  background: #fffef9;
+  color: var(--ink);
+  padding: 8mm 9mm;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--line);
+}
+
+.sheet--interactive [contenteditable="true"] {
+  cursor: text;
+}
+
+.sheet--interactive [contenteditable="true"]:focus {
+  outline: 0.35mm dashed var(--accent);
+  outline-offset: 0.8mm;
+}
+
+.sheet__masthead {
+  text-align: center;
+  border-bottom: 2.5px solid var(--line);
+  padding-bottom: 3.5mm;
+  flex-shrink: 0;
+  margin-bottom: 5mm;
+}
+
+.sheet-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5mm;
+}
+
+.sheet__masthead h1 {
+  font-family: var(--font-gothic);
+  font-weight: 900;
+  margin: 0;
+  letter-spacing: 0.12em;
+  font-size: 13mm;
+  line-height: 1.2;
+  color: var(--ink);
+  word-break: break-word;
+}
+
+.sheet-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2.8mm;
+  min-height: 0;
+}
+
+.sheet-section__title {
+  font-family: var(--font-gothic);
+  font-weight: 800;
+  font-size: 7.5mm;
+  line-height: 1.15;
+  margin: 0;
+  letter-spacing: 0.14em;
+  color: var(--ink);
+  flex-shrink: 0;
+}
+
+.sheet-section__title--kikan,
+.sheet-section__title--itaku {
+  font-size: 6.5mm;
+  font-weight: 700;
+}
+
+.sheet-grid {
+  display: grid;
+  flex: 1;
+  min-height: 0;
+  align-content: stretch;
+}
+
+.pbook {
+  border: 0.35mm solid var(--line);
+  border-radius: 1.2mm;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: clamp(1.5mm, 2.2cqi, 3mm);
+  padding: clamp(1.8mm, 2.6cqi, 3.5mm);
+  background: #fff;
+  min-height: 0;
+  height: 100%;
+  width: 100%;
+  align-self: stretch;
+  container-type: size;
+  container-name: pbook;
+}
+
+.pbook--shinpan {
+  box-shadow: 0 0.4mm 1.2mm rgba(139, 41, 66, 0.12);
+}
+
+.pbook__cover {
+  height: min(100%, 94cqb);
+  width: auto;
+  max-width: min(100%, 50cqi);
+  aspect-ratio: 148 / 210;
+  object-fit: cover;
+  background: #f0ebe4;
+  border-radius: 0.8mm;
+  border: 0.25mm solid var(--line);
+  align-self: center;
+  flex-shrink: 0;
+}
+
+.pbook--shinpan .pbook__cover {
+  max-width: min(100%, 58cqi);
+  height: min(100%, 96cqb);
+}
+
+.pbook--itaku .pbook__cover {
+  max-width: min(100%, 44cqi);
+  height: min(100%, 90cqb);
+}
+
+.pbook__cover-slot {
+  position: relative;
+  align-self: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  width: auto;
+  height: min(100%, 94cqb);
+  max-width: min(100%, 50cqi);
+  aspect-ratio: 148 / 210;
+  border: 0.45mm dashed var(--line);
+  border-radius: 0.85mm;
+  background: #f0ebe4;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  line-height: normal;
+}
+
+.pbook--shinpan .pbook__cover-slot {
+  max-width: min(100%, 58cqi);
+  height: min(100%, 96cqb);
+}
+
+.pbook--itaku .pbook__cover-slot {
+  max-width: min(100%, 44cqi);
+  height: min(100%, 90cqb);
+}
+
+.pbook__cover-file-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.pbook__cover-empty {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(0.8mm, 1.8cqi, 2.4mm);
+}
+
+.pbook__cover-img {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pbook__cover-slot-footer {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  padding: clamp(0.35mm, 0.85cqi, 1mm);
+  background: rgba(255, 254, 252, 0.94);
+  border-top: 0.25mm solid var(--line);
+}
+
+.pbook__cover-insert-btn {
+  cursor: pointer;
+  font-family: var(--font-gothic);
+  font-weight: 600;
+  font-size: clamp(1.8mm, 4.8cqi, 3.4mm);
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  background: #fff;
+  border: 0.3mm solid var(--line);
+  border-radius: 999px;
+  padding: clamp(0.4mm, 1cqi, 0.65mm) clamp(1.6mm, 4cqi, 3mm)
+    clamp(0.45mm, 1cqi, 0.7mm);
+  line-height: 1.25;
+  text-align: center;
+  user-select: none;
+}
+
+.pbook__cover-insert-btn:hover {
+  filter: brightness(0.97);
+}
+
+.pbook__cover-insert-btn:active {
+  filter: brightness(0.93);
+}
+
+.pbook__body {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1mm, 1.6cqi, 2.2mm);
+  min-width: 0;
+  min-height: 0;
+}
+
+.pbook__headline {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(0.35mm, 0.7cqi, 1.1mm);
+  width: 100%;
+  min-width: 0;
+  flex-shrink: 0;
+}
+
+.pbook__headline .pbook__title {
+  width: 100%;
+}
+
+.pbook__headline .pbook__price {
+  text-align: left;
+  align-self: flex-start;
+  white-space: nowrap;
+}
+
+.pbook__title {
+  font-family: var(--font-gothic);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+  word-break: break-word;
+  white-space: pre-line;
+  text-align: justify;
+  text-align-last: start;
+  text-justify: inter-character;
+}
+
+.pbook--shinpan .pbook__title {
+  font-size: clamp(3.8mm, 14cqi, 11.5mm);
+}
+
+.pbook--kikan .pbook__title {
+  font-size: clamp(2.6mm, 9.5cqi, 7.8mm);
+}
+
+.pbook--itaku .pbook__title {
+  font-size: clamp(2.9mm, 10.5cqi, 8mm);
+}
+
+.pbook__summary {
+  margin: 0;
+  font-weight: 500;
+  color: #4a443e;
+  word-break: break-word;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  white-space: pre-line;
+  text-align: justify;
+  text-align-last: start;
+  text-justify: inter-character;
+}
+
+.pbook--shinpan .pbook__summary {
+  font-size: clamp(2.9mm, 8.8cqi, 7.8mm);
+  line-height: 1.36;
+}
+
+.pbook--kikan .pbook__summary {
+  font-size: clamp(2.6mm, 7.8cqi, 6.8mm);
+  line-height: 1.34;
+}
+
+.pbook--itaku .pbook__summary {
+  font-size: clamp(2.4mm, 7cqi, 6mm);
+  line-height: 1.32;
+}
+
+.pbook__price {
+  margin: 0;
+  font-weight: 700;
+  color: var(--accent);
+  flex-shrink: 0;
+  letter-spacing: 0.03em;
+}
+
+.pbook--shinpan .pbook__price {
+  font-size: clamp(4.4mm, 15cqi, 12.5mm);
+}
+
+.pbook--kikan .pbook__price {
+  font-size: clamp(3.1mm, 10.5cqi, 8.5mm);
+}
+
+.pbook--itaku .pbook__price {
+  font-size: clamp(3.5mm, 12cqi, 9mm);
+}
+
+.pbook__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(1.8mm, 4.5cqi, 3.2mm);
+  color: #a39a91;
+  text-align: center;
+  padding: 1mm;
+}
+
+.print-root {
+  display: none;
+}
+
+/* 画像出力時のみレイアウト計算できるよう画面外に載せる（印刷用 DOM を流用）
+   visibility:hidden は子に継承され html-to-image のキャンバスが真っ白になるため使わない */
+.print-root.print-root--capture-ready {
+  display: block;
+  position: fixed;
+  left: -20000px;
+  top: 0;
+  pointer-events: none;
+  width: 297mm;
+  height: 420mm;
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-root {
+    display: block;
+  }
+
+  .app {
+    padding: 0;
+    max-width: none;
+  }
+
+  .sheet {
+    border: none;
+    box-shadow: none;
+  }
+}
+
+@page {
+  size: A3 portrait;
+  margin: 0;
+}

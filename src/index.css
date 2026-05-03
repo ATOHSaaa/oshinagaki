@@ -1,0 +1,44 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --ink: #1a1512;
+  --paper: #faf6f0;
+  --accent: #8b2942;
+  --accent-soft: #f5e8ec;
+  --line: #8f8983;
+  --muted: #6b635c;
+  /* YakuHanJPs: 「」などカッコ類だけ約物を細く（本文は Noto にフォールバック） */
+  --font-gothic: "YakuHanJPs", "Noto Sans JP", "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+    system-ui, sans-serif;
+}
+
+html {
+  font-family: var(--font-gothic);
+  color: var(--ink);
+  background: #e8e4de;
+  line-height: 1.45;
+  text-spacing-trim: space-first;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+}
+
+#root {
+  min-height: 100dvh;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
